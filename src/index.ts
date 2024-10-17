@@ -12,6 +12,9 @@ app.use(express.json());
 
 app.use("/student", studentRouter);
 
+
+app.use(express.json());
+
 app.listen(process.env.SERVER_PORT, function () {
   console.log("Escuchando puerto " + process.env.SERVER_PORT);
 });
