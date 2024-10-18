@@ -12,7 +12,6 @@ app.use(express.json());
 
 app.use("/student", studentRouter);
 
-
 app.use(express.json());
 
 app.listen(process.env.SERVER_PORT, function () {
