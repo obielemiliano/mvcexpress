@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -18,7 +19,7 @@
   ],
   "author": "Obiel Emiliano Rangel Moreno",
   "license": "MIT",
-  "description": "",
+  "description": "Poryecto completo con express para la materia de IoT  para Base de Datos",
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
