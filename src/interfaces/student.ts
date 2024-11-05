@@ -17,5 +17,4 @@ export interface PaginatedStudent {
   total: number;
   totalPages: number;
   data: Student[];
-  }
-  
+}

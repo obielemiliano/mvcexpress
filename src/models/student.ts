@@ -8,13 +8,13 @@ export const findAllStudents = async (
   offset: number,
 ): Promise<PaginatedStudent> => {
   const [rows] = await pool.query<RowDataPacket[]>(
-    "SELECT * FROM students LIMIT ? OFFSET ?", 
+    "SELECT * FROM students LIMIT ? OFFSET ?",
     [limit, offset],
   );
 
   // Consulta para obtener el total de registros
-const [totalRows] = (await pool.query(
-  "SELECT COUNT(*) as count FROM students",
+  const [totalRows] = (await pool.query(
+    "SELECT COUNT(*) as count FROM students",
   )) as [{ count: number }[], unknown];
   const total = totalRows[0].count;
 
