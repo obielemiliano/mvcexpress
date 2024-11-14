@@ -36,7 +36,7 @@ app.use("/api/v1/student", studentRouter);
 
 app.use("/api/v2/professor", professorRouter);
 
-app.use("/api/v3/course", courseRouter)
+app.use("/api/v3/course", courseRouter);
 
 // Rutas de prueba
 app.use("/error", testRoutes);

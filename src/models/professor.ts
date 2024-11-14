@@ -14,12 +14,12 @@ export const findAllProfessors = async (
   data: Professor[];
 }> => {
   const [rows] = await pool.query<RowDataPacket[]>(
-    "SELECT * FROM professors LIMIT ? OFFSET ?",
+    "SELECT * FROM teachers LIMIT ? OFFSET ?",
     [limit, offset],
   );
 
   const [totalRows] = (await pool.query(
-    "SELECT COUNT(*) as count FROM professors",
+    "SELECT COUNT(*) as count FROM teachers",
   )) as [{ count: number }[], unknown];
   const total = totalRows[0].count;
   const totalPages = Math.ceil(total / limit);
@@ -38,7 +38,7 @@ export const insertProfessor = async (
 ): Promise<Professor> => {
   const { first_name, last_name, department, email, phone } = professor;
   const [result] = await pool.query<ResultSetHeader>(
-    `INSERT INTO professors (first_name, last_name, department, email, phone) 
+    `INSERT INTO teachers (first_name, last_name, department, email, phone) 
      VALUES (?, ?, ?, ?, ?)`,
     [first_name, last_name, department, email, phone],
   );
@@ -52,7 +52,7 @@ export const updateProfessor = async (
 ): Promise<Professor> => {
   const { first_name, last_name, department, email, phone } = professor;
   await pool.query<ResultSetHeader>(
-    `UPDATE professors
+    `UPDATE teachers
      SET first_name = ?, 
          last_name = ?, 
          department = ?, 
@@ -66,8 +66,6 @@ export const updateProfessor = async (
 };
 
 export const deleteProfessor = async (id: number): Promise<number> => {
-  await pool.query<ResultSetHeader>(`DELETE FROM professors WHERE id = ?`, [
-    id,
-  ]);
+  await pool.query<ResultSetHeader>(`DELETE FROM teachers WHERE id = ?`, [id]);
   return id;
 };
