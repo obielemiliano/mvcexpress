@@ -56,8 +56,8 @@ Ideal para desarrolladores que buscan una base sólida y bien estructurada para 
 ### 1. Clonar el Repositorio
 
 ```bash
-git clone https://github.com/JuanMaLR/mvc-express-IoT-2024.git
-cd mvc-express-IoT-2024
+git clone https://github.com/obielemiliano/mvcexpress.git
+cd mvcexpress
 ```
 
 ### 2. Instalar Dependencias (Asegúrate de tener Node.js y npm instalados)

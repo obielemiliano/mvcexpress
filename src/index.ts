@@ -1,8 +1,7 @@
 import dotenvFlow from "dotenv-flow";
 import express from "express";
-import studentRouter from "./routes/student";
-import professorRouter from "./routes/professor";
-import courseRouter from "./routes/course";
+import airRouter from "./routes/air";
+import movementRouter from "./routes/movement";
 import testRoutes from "./routes/test";
 import unknownResource from "./middlewares/unknown-resource";
 import unknownError from "./middlewares/unknown-error";
@@ -31,12 +30,10 @@ app.use(cors());
 // Middleware para parsear JSON
 app.use(express.json());
 
-// Rutas de la api
-app.use("/api/v1/student", studentRouter);
+// Rutas de la ap
+app.use("/api/v1/air", airRouter);
 
-app.use("/api/v2/professor", professorRouter);
-
-app.use("/api/v3/course", courseRouter);
+app.use("/api/v2/movement", movementRouter);
 
 // Rutas de prueba
 app.use("/error", testRoutes);
