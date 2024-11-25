@@ -18,8 +18,6 @@ export const findAllMovements = async (
     [limit, offset],
   );
 
-  console.log("Movement", rows);
-
   const [totalRows] = (await pool.query(
     "SELECT COUNT(*) as count FROM movements",
   )) as [{ count: number }[], unknown];

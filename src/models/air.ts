@@ -37,7 +37,7 @@ export const insertAirRecord = async (air: Air): Promise<Air> => {
   const { sensor_id, co2_level, timestamp } = air;
   const [result] = await pool.query<ResultSetHeader>(
     `INSERT INTO air (sensor_id, CO2_level, timestamp) 
-     VALUES (?, ?, ?, ?)`,
+     VALUES (?, ?, ?)`,
     [sensor_id, co2_level, timestamp],
   );
   const { insertId } = result;
