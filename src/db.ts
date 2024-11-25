@@ -4,6 +4,7 @@ import dotenvFlow from "dotenv-flow";
 
 if (process.env.NODE_ENV !== "production") {
   dotenvFlow.config();
+  console.log("Variables cargadas:", process.env);
 }
 
 const configOptions: ConnectionOptions = {

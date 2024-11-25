@@ -5,7 +5,7 @@ const unknownResource = (req: Request, res: Response, next: NextFunction) => {
   res.status(404).json({
     status: 404,
     error: "No encontrado",
-    message: "La ruta ${req.originalUrl} no existe en el servidor.",
+    message: `La ruta ${req.originalUrl} no existe en el servidor.`,
   });
   console.error("Recurso no encontrado: ${req.originalUrl}");
 };
