@@ -37,8 +37,8 @@ export const findAllMovements = async (
 export const insertMovement = async (movement: Movement): Promise<Movement> => {
   const { detected } = movement; // Eliminado el campo timestamp
   const [result] = await pool.query<ResultSetHeader>(
-    `INSERT INTO movements ( detected) 
-     VALUES (?, ?)`, // Eliminado el campo timestamp
+    `INSERT INTO movements (detected) 
+     VALUES (?)`, // Eliminado el campo timestamp
     [detected], // Eliminado el valor timestamp
   );
   const { insertId } = result;

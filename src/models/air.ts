@@ -37,8 +37,8 @@ export const findAllAirRecords = async (
 export const insertAirRecord = async (air: Air): Promise<Air> => {
   const { co2_level } = air; // Eliminado el campo timestamp
   const [result] = await pool.query<ResultSetHeader>(
-    `INSERT INTO air ( co2_level) 
-     VALUES (?, ?)`, // Eliminado el campo timestamp
+    `INSERT INTO air (co2_level) 
+     VALUES (?)`, // Eliminado el campo timestamp
     [co2_level], // Eliminado el valor timestamp
   );
   const { insertId } = result;
