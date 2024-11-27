@@ -35,11 +35,11 @@ export const findAllAirRecords = async (
 
 // Insertar un nuevo registro de calidad de aire
 export const insertAirRecord = async (air: Air): Promise<Air> => {
-  const { sensor_id, co2_level } = air; // Eliminado el campo timestamp
+  const { co2_level } = air; // Eliminado el campo timestamp
   const [result] = await pool.query<ResultSetHeader>(
-    `INSERT INTO air (sensor_id, CO2_level) 
+    `INSERT INTO air ( co2_level) 
      VALUES (?, ?)`, // Eliminado el campo timestamp
-    [sensor_id, co2_level], // Eliminado el valor timestamp
+    [co2_level], // Eliminado el valor timestamp
   );
   const { insertId } = result;
   return { id: insertId, ...air };
@@ -47,13 +47,12 @@ export const insertAirRecord = async (air: Air): Promise<Air> => {
 
 // Actualizar un registro de calidad de aire existente
 export const updateAirRecord = async (id: number, air: Air): Promise<Air> => {
-  const { sensor_id, co2_level } = air; // Eliminado el campo timestamp
+  const { co2_level } = air; // Eliminado el campo timestamp
   await pool.query<ResultSetHeader>(
     `UPDATE air
-     SET sensor_id = ?, 
-         CO2_level = ? 
+     SET co2_level = ? 
      WHERE id = ?;`, // Eliminado el campo timestamp
-    [sensor_id, co2_level, id], // Eliminado el valor timestamp
+    [co2_level, id], // Eliminado el valor timestamp
   );
 
   return { id, ...air };

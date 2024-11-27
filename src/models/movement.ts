@@ -35,11 +35,11 @@ export const findAllMovements = async (
 
 // Insertar un nuevo registro de movimiento
 export const insertMovement = async (movement: Movement): Promise<Movement> => {
-  const { sensor_id, detected } = movement; // Eliminado el campo timestamp
+  const { detected } = movement; // Eliminado el campo timestamp
   const [result] = await pool.query<ResultSetHeader>(
-    `INSERT INTO movements (sensor_id, detected) 
+    `INSERT INTO movements ( detected) 
      VALUES (?, ?)`, // Eliminado el campo timestamp
-    [sensor_id, detected], // Eliminado el valor timestamp
+    [detected], // Eliminado el valor timestamp
   );
   const { insertId } = result;
   return { id: insertId, ...movement };
@@ -50,13 +50,12 @@ export const updateMovement = async (
   id: number,
   movement: Movement,
 ): Promise<Movement> => {
-  const { sensor_id, detected } = movement; // Eliminado el campo timestamp
+  const { detected } = movement; // Eliminado el campo timestamp
   await pool.query<ResultSetHeader>(
     `UPDATE movements
-     SET sensor_id = ?, 
-         detected = ?
+     SET detected = ?
      WHERE id = ?;`, // Eliminado el campo timestamp
-    [sensor_id, detected, id], // Eliminado el valor timestamp
+    [detected, id], // Eliminado el valor timestamp
   );
 
   return { id, ...movement };
