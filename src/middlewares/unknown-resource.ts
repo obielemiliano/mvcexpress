@@ -7,7 +7,7 @@ const unknownResource = (req: Request, res: Response, next: NextFunction) => {
     error: "No encontrado",
     message: `La ruta ${req.originalUrl} no existe en el servidor.`,
   });
-  console.error("Recurso no encontrado: ${req.originalUrl}");
+  console.error(`Recurso no encontrado: ${req.originalUrl}`);
 };
 
 export default unknownResource;

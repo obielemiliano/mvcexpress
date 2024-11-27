@@ -33,34 +33,36 @@ export const findAllMovements = async (
   };
 };
 
+// Insertar un nuevo registro de movimiento
 export const insertMovement = async (movement: Movement): Promise<Movement> => {
-  const { sensor_id, detected, timestamp } = movement;
+  const { sensor_id, detected } = movement; // Eliminado el campo timestamp
   const [result] = await pool.query<ResultSetHeader>(
-    `INSERT INTO movements (sensor_id, detected, timestamp) 
-     VALUES (?, ?, ?)`,
-    [sensor_id, detected, timestamp],
+    `INSERT INTO movements (sensor_id, detected) 
+     VALUES (?, ?)`, // Eliminado el campo timestamp
+    [sensor_id, detected], // Eliminado el valor timestamp
   );
   const { insertId } = result;
   return { id: insertId, ...movement };
 };
 
+// Actualizar un registro de movimiento existente
 export const updateMovement = async (
   id: number,
   movement: Movement,
 ): Promise<Movement> => {
-  const { sensor_id, detected, timestamp } = movement;
+  const { sensor_id, detected } = movement; // Eliminado el campo timestamp
   await pool.query<ResultSetHeader>(
     `UPDATE movements
      SET sensor_id = ?, 
-         detected = ?, 
-         timestamp = ?
-     WHERE id = ?;`,
-    [sensor_id, detected, timestamp, id],
+         detected = ?
+     WHERE id = ?;`, // Eliminado el campo timestamp
+    [sensor_id, detected, id], // Eliminado el valor timestamp
   );
 
   return { id, ...movement };
 };
 
+// Eliminar un registro de movimiento
 export const deleteMovement = async (id: number): Promise<number> => {
   await pool.query<ResultSetHeader>(`DELETE FROM movements WHERE id = ?`, [id]);
   return id;
