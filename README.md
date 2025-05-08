@@ -33,7 +33,7 @@ Ideal para desarrolladores que buscan una base sólida y bien estructurada para 
 ## 👨‍💻 Autores
 
 - **Obiel Emiliano Rangel Moreno** - _Desarrollador Principal_ - [GitHub](https://github.com/obielemiliano)
-- **Equipo de Desarrollo** - _Contribuidores_
+- **Emiliano Camacho Ponce y Alfredo Alejandro Soto Herrera** - _Contribuidores_
 
 ## 📂 Estructura del Proyecto
 
